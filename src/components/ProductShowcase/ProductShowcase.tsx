@@ -13,7 +13,9 @@ function ProductShowcase() {
   const [error, setError] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState(1);
 
+  // Busca os produtos na API assim que o componente é carregado.
   useEffect(() => {
     async function loadProducts() {
       try {
@@ -29,6 +31,7 @@ function ProductShowcase() {
     loadProducts();
   }, []);
 
+  // Formata os preços para o padrão de moeda brasileira (R$).
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -36,22 +39,30 @@ function ProductShowcase() {
     }).format(price);
   };
 
+  // Abre o modal com o produto selecionado e reinicia a quantidade.
+  const openProduct = (product: Product) => {
+    setSelectedProduct(product);
+    setQuantity(1);
+  };
+
+  // Avança os produtos no carrossel, respeitando o limite disponível.
   const nextProducts = () => {
     setCurrentIndex((previous) =>
       Math.min(previous + 1, Math.max(products.length - 4, 0))
     );
   };
 
+  // Retorna os produtos do carrossel para a posição anterior.
   const previousProducts = () => {
     setCurrentIndex((previous) => Math.max(previous - 1, 0));
   };
 
+  // Exibe até quatro produtos por vez, conforme a posição do carrossel.
   const visibleProducts = products.slice(currentIndex, currentIndex + 4);
 
   return (
     <section className="product-showcase">
       <div className="product-showcase__container">
-
         <h2 className="product-showcase__title">
           Produtos relacionados
         </h2>
@@ -65,6 +76,7 @@ function ProductShowcase() {
           <a href="#todos">VER TODOS</a>
         </nav>
 
+        {/* Estados de carregamento, erro e ausência de produtos. */}
         {loading && (
           <p className="product-showcase__message">
             Carregando produtos...
@@ -83,9 +95,9 @@ function ProductShowcase() {
           </p>
         )}
 
+        {/* Carrossel de produtos, exibido após o carregamento dos dados. */}
         {!loading && !error && products.length > 0 && (
           <div className="product-showcase__carousel">
-
             <button
               type="button"
               className="product-showcase__arrow product-showcase__arrow--left"
@@ -105,7 +117,7 @@ function ProductShowcase() {
                   <button
                     type="button"
                     className="product-card__details"
-                    onClick={() => setSelectedProduct(product)}
+                    onClick={() => openProduct(product)}
                     aria-label={`Ver detalhes de ${product.productName}`}
                   >
                     <div className="product-card__image">
@@ -131,7 +143,7 @@ function ProductShowcase() {
                   <button
                     type="button"
                     className="product-card__buy"
-                    onClick={() => setSelectedProduct(product)}
+                    onClick={() => openProduct(product)}
                   >
                     COMPRAR
                   </button>
@@ -148,11 +160,11 @@ function ProductShowcase() {
             >
               <ChevronRight />
             </button>
-
           </div>
         )}
       </div>
 
+      {/* Modal com informações e opções do produto selecionado. */}
       {selectedProduct && (
         <div
           className="product-modal__backdrop"
@@ -182,9 +194,42 @@ function ProductShowcase() {
             <div className="product-modal__info">
               <h2>{selectedProduct.productName}</h2>
 
+              <strong>{formatPrice(selectedProduct.price)}</strong>
+
               <p>{selectedProduct.descriptionShort}</p>
 
-              <strong>{formatPrice(selectedProduct.price)}</strong>
+              <a href="#detalhes">Veja mais detalhes do produto &gt;</a>
+
+              <div className="product-modal__actions">
+                <div className="product-modal__quantity">
+                  {/* Impede que a quantidade seja menor que uma unidade. */}
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((previous) => Math.max(1, previous - 1))}
+                    aria-label="Diminuir quantidade"
+                  >
+                    −
+                  </button>
+
+                  <span>{quantity}</span>
+
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((previous) => previous + 1)}
+                    aria-label="Aumentar quantidade"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  className="product-modal__buy"
+                  onClick={() => alert(`Produto selecionado: ${quantity} unidade(s).`)}
+                >
+                  COMPRAR
+                </button>
+              </div>
             </div>
           </div>
         </div>

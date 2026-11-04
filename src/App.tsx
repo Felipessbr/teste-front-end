@@ -5,6 +5,8 @@ import ProductShowcase from "./components/ProductShowcase/ProductShowcase";
 import Partners from "./components/Partners/Partners";
 import RelatedProducts from "./components/RelatedProducts/RelatedProducts";
 import Brands from "./components/brands/brands";
+import Newsletter from "./components/Newsletter/Newsletter";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Partners />
         <Brands />
         <RelatedProducts />
+        <Newsletter />
+        <Footer />
       </main>
     </>
   );
