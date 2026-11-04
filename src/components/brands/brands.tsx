@@ -1,4 +1,4 @@
-import brands from "../../assets/Group 35.svg";
+import brands from "../../assets/images/icons/Group 35.svg";
 
 import "./brands.scss";
 

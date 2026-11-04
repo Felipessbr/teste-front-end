@@ -3,15 +3,14 @@ import {
   Truck,
   CreditCard,
   Search,
-  ArrowLeftRight,
   Heart,
   CircleUserRound,
   ShoppingCart,
   Crown,
 } from "lucide-react";
 
-import logo from "../../assets/Group 35.svg";
-import box from "../../assets/icon-box.svg";
+import logo from "../../assets/images/icons/Group 35.svg";
+import box from "../../assets/images/icons/icon-box.svg";
 
 import "./Header.scss";
 

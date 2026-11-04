@@ -1,13 +1,13 @@
 
 import "./FeaturedCategories.scss";
 
-import bebidas from "../../assets/categoria-bebidas.webp";
-import esportes from "../../assets/categoria-esportes-fitness.webp";
-import ferramentas from "../../assets/categoria-ferramentas.webp";
-import moda from "../../assets/categoria-moda.webp";
-import saude from "../../assets/categoria-saude.webp";
-import supermercado from "../../assets/categoria-supermercado.webp";
-import tecnologia from "../../assets/categoria-tecnologia.webp";
+import bebidas from "../../assets/images/categories/categoria-bebidas.webp";
+import esportes from "../../assets/images/categories/categoria-esportes-fitness.webp";
+import ferramentas from "../../assets/images/categories/categoria-ferramentas.webp";
+import moda from "../../assets/images/categories/categoria-moda.webp";
+import saude from "../../assets/images/categories/categoria-saude.webp";
+import supermercado from "../../assets/images/categories/categoria-supermercado.webp";
+import tecnologia from "../../assets/images/categories/categoria-tecnologia.webp";
 
 const categories = [
   { name: "Tecnologia", image: tecnologia },

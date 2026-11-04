@@ -1,4 +1,4 @@
-import fundoBanner from "../../assets/black-friday-fundo.jpg";
+import fundoBanner from "../../assets/images/backgrounds/black-friday-fundo.jpg";
 
 import "./Banner.scss";
 

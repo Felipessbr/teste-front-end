@@ -4,7 +4,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 
-import logo from "../../assets/Group 35.svg";
+import logo from "../../assets/images/icons/Group 35.svg";
 
 import "./Footer.scss";
 

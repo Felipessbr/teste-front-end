@@ -1,4 +1,4 @@
-import bannerPartner from "../../assets/banner-parceiros.webp";
+import bannerPartner from "../../assets/images/banners/banner-parceiros.webp";
 
 import "./Partners.scss";
 
