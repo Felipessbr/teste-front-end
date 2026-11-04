@@ -1,7 +1,22 @@
-import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
 
-// https://vite.dev/config/
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
 export default defineConfig({
   plugins: [react()],
-})
+
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://app.econverse.com.br",
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) =>
+          path.replace(
+            /^\/api/,
+            "/teste-front-end/junior/tecnologia/lista-produtos"
+          ),
+      },
+    },
+  },
+});
