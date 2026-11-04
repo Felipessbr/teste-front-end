@@ -4,6 +4,7 @@ import FeaturedCategories from "./components/FeaturedCategories/FeaturedCategori
 import ProductShowcase from "./components/ProductShowcase/ProductShowcase";
 import Partners from "./components/Partners/Partners";
 import RelatedProducts from "./components/RelatedProducts/RelatedProducts";
+import Brands from "./components/brands/brands";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         <FeaturedCategories />
         <ProductShowcase />
         <Partners />
+        <RelatedProducts />
+        <Partners />
+        <Brands />
         <RelatedProducts />
       </main>
     </>
